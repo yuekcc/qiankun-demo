@@ -9,7 +9,7 @@ Vue.config.productionTip = false;
 const render = () => {
   new Vue({
     router,
-    render: (h) => h(App),
+    render: h => h(App),
   }).$mount('#sssAppAContainer');
 };
 
@@ -22,6 +22,7 @@ export async function bootstrap() {
 }
 
 export async function mount() {
+  console.log('MicroApp mounted. app name: ModuleBlog');
   render();
 }
 

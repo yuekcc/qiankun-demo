@@ -1,4 +1,11 @@
-import { AppMetadata, FrameworkConfiguration, LoadableApp, loadMicroApp, MicroApp, start } from 'qiankun';
+import {
+  AppMetadata,
+  FrameworkConfiguration,
+  LoadableApp,
+  loadMicroApp,
+  MicroApp,
+  start,
+} from 'qiankun';
 import Vue from 'vue';
 
 export interface AppManifest extends AppMetadata {
@@ -9,7 +16,7 @@ export interface PropDataSet {
   [field: string]: any;
 }
 
-export class QiankunHelper {
+export class MicroAppLoader {
   private _started = false;
   private _appList: AppManifest[] = [];
 
@@ -85,20 +92,20 @@ export class QiankunHelper {
   }
 }
 
-export const qiankunHelper = new QiankunHelper();
+export const microAppLoader = new MicroAppLoader();
 
 /**
  * 创建一个 App 容器组件（Vue 组件）
  *
  * 该组件会自动在 mounted 后自动挂载应用
  *
- * @param helper QianKunHelper 实例
+ * @param loader QianKunHelper 实例
  * @param getPropDataSet 应用启动参数数据仓库 getter
  */
-export const makeAppComponentCreator = (helper: QiankunHelper, getPropDataSet: () => PropDataSet) => (
-  name: string,
-  opt = { autoRemove: true }
-) => {
+export const makeAppComponentCreator = (
+  loader: MicroAppLoader,
+  getPropDataSet: () => PropDataSet,
+) => (name: string, opt = { autoRemove: true }) => {
   const containerId = `app-container-${name}`;
   return Vue.extend({
     data() {
@@ -114,10 +121,13 @@ export const makeAppComponentCreator = (helper: QiankunHelper, getPropDataSet: (
       },
     },
     mounted() {
-      const app = helper.findApp(name);
+      console.log('MicroAppComponent mounted. containerId =', containerId);
+      const app = loader.findApp(name);
       if (app) {
         const propDb = getPropDataSet();
-        this.appInstance = helper.loadApp(app, `#${containerId}`, propDb);
+        this.appInstance = loader.loadApp(app, `#${containerId}`, propDb);
+      } else {
+        this.errorMessage = 'app not found, name = ' + name;
       }
     },
     beforeDestroy() {

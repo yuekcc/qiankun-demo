@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { qiankunStart } from './iapp';
+import { systemStart } from './micro-app-utils';
 import router from './router';
 
 Vue.config.productionTip = false;
@@ -9,6 +9,6 @@ new Vue({
   router,
   render: h => h(App),
   mounted() {
-    qiankunStart();
+    systemStart();
   },
 }).$mount('#app');

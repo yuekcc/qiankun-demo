@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@demos/micro-app-loader": "workspace:^1.0.0",
     "core-js": "^3.6.5",
     "qiankun": "^2.3.5",
     "qiankun-helper": "git+https://gitee.com/yuekcc/qiankun-helper.git",
@@ -44,7 +45,11 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {},
+    "ignorePatterns": [
+      "node_modules/",
+      "dist/"
+    ]
   },
   "browserslist": [
     "> 1%",

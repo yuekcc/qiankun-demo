@@ -1,4 +1,4 @@
-import { makeMicroAppContainer } from '../iapp';
+import { makeMicroAppContainer } from '../micro-app-utils';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
@@ -10,15 +10,20 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+    children: [
+      {
+        path: 'about/*',
+        name: 'ModuleAboutMe',
+        component: makeMicroAppContainer('ModuleAboutMe'),
+      },
+      {
+        path: 'blog/*',
+        name: 'ModuleBlog',
+        component: makeMicroAppContainer('ModuleBlog'),
+      },
+    ],
   },
-  {
-    path: '/about*',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-  {
-    path: '/blog*',
-    component: makeMicroAppContainer('blog'),
-  },
+
   {
     path: '*',
     component: {
