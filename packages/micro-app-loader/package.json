@@ -1,0 +1,25 @@
+{
+  "name": "micro-app-loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "exports": "dist/index.module.js",
+  "source": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "microbundle": "^0.13.0",
+    "qiankun": "^2.3.5"
+  },
+  "devDependencies": {
+    "vue": "^2.6.12"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.12"
+  }
+}

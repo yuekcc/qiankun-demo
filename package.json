@@ -1,0 +1,12 @@
+{
+  "name": "micro-frontend-demo",
+  "version": "1.0.0",
+  "description": "一个基于 qiankun 的微前端 demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm build -r"
+  },
+  "keywords": [],
+  "author": "yuekcc",
+  "license": "ISC"
+}
