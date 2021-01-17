@@ -1,5 +1,5 @@
 {
-  "name": "sss-portal",
+  "name": "big-project-portal",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,10 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@demos/micro-app-loader": "workspace:^1.0.0",
+    "@demos/applet-loader": "workspace:^1.0.0",
     "core-js": "^3.6.5",
-    "qiankun": "^2.3.5",
-    "qiankun-helper": "git+https://gitee.com/yuekcc/qiankun-helper.git",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },

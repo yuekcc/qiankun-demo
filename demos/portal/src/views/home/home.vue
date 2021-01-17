@@ -2,8 +2,8 @@
   <div>
     <div>Home.vue</div>
     <div>
-      <router-link to="/blog/">BLOG</router-link>
-      <router-link to="/about/">about</router-link>
+      <router-link to="/applets/blogs/">BLOG</router-link>
+      <router-link to="/applets/about-me/">about</router-link>
     </div>
     <router-view />
   </div>

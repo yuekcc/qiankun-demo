@@ -1,7 +1,8 @@
-import { makeMicroAppContainer } from '../micro-app-utils';
+import { Home } from '@/views/home';
+import { makeAppletComponent } from '@/applet-utils';
+import AboutMe from '@/views/about';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
@@ -12,14 +13,17 @@ const routes = [
     component: Home,
     children: [
       {
-        path: 'about/*',
+        path: '/applets/about-me/*',
         name: 'ModuleAboutMe',
-        component: makeMicroAppContainer('ModuleAboutMe'),
+        component: AboutMe,
       },
       {
-        path: 'blog/*',
+        path: '/applets/blogs/*',
         name: 'ModuleBlog',
-        component: makeMicroAppContainer('ModuleBlog'),
+        meta: {
+          baseUrl: '/applets/blogs/',
+        },
+        component: makeAppletComponent('ModuleBlog'),
       },
     ],
   },

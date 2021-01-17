@@ -27,10 +27,12 @@ const routes = [
   },
 ];
 
-const router = new VueRouter({
-  mode: 'history',
-  base: '/module-blog/',
-  routes,
-});
+export function createRouter(base) {
+  console.log('createRouter with baseUrl:', base);
 
-export default router;
+  return new VueRouter({
+    mode: 'history',
+    base,
+    routes,
+  });
+}

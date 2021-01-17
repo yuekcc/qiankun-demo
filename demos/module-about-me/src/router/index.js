@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    redirect: '/works',
+    redirect: '/works', // 跳转到下级路由
   },
   {
     path: '/study',
@@ -17,14 +17,14 @@ const routes = [
   {
     path: '/works',
     name: 'works',
-    component: () => import('../views/Works.vue'),
+    component: () => import('../views/Works.vue'), // 异步加载组件
   },
 ];
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes,
-});
-
-export default router;
+export function createRouter(baseUrl) {
+  return new VueRouter({
+    mode: 'history',
+    base: baseUrl,
+    routes,
+  });
+}
